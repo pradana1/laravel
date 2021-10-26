@@ -130,9 +130,8 @@ return [
     */
 
     'custom' => [
-        'email' => [
-            'required' => 'we need your :attribute',
-            'email'     => 'please provide email address',
+        'attribute-name' => [
+            'rule-name' => 'custom-message',
         ],
     ],
 

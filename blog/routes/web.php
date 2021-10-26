@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('other', 'HomeController@other')->name('other');
-Route::post('/', 'HomeController@store')->name('subscribe');
+Route::get('/', 'HomeController@index');
+Route::get('/user/{user}', 'HomeController@show');

@@ -2,28 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Newslatter\SubscriptionFormRequest;
-use App\Mail\UserActivationMail;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // Mail::to('dana@belajarlaravel.test')->send(new UserActivationMail());
+        $user = User::active()->ageGreaterThan(15)->get();
 
-        return new UserActivationMail();
+        dd($user);
+        // return $user->getFirstNameOrUsername();
     }
 
-    public function other()
+    public function show(User $user)
     {
-        return 'Other Route';
-    }
 
-    public function store(SubscriptionFormRequest $request)
-    {
-        // dd('Berhasil Langganan');
-        return redirect()->route('other');
+        dd($user);
     }
 }

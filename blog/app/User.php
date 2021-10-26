@@ -36,4 +36,33 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getFirstNameOrUsername()
+    {
+        if (!$this->first_name) {
+            $this->username;
+        }
+
+        return $this->first_name;
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', true);
+    }
+
+    public function scopeAgeGreaterThan($query, $age)
+    {
+        return $query->where('age', '>=', $age);
+    }
+
+    // public function getRouteKeyName()
+    // {
+    //     return 'username';
+    // }
 }
